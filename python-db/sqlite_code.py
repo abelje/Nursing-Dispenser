@@ -109,7 +109,7 @@ def database_get_drug(patient_name):
     cursor = connection.cursor()
 
     cursor.execute(
-        """SELECT d.name
+        """SELECT d.name, d.drawer_num
         FROM drug d
         JOIN patient_drug p_d on d.ID = p_d.drug_id
         JOIN patient p on p.ID = p_d.patient_id
@@ -123,6 +123,7 @@ def database_get_drug(patient_name):
     drugs = [
         {
             "name": row[0],
+            "drawer_num": row[1],
         }
         for row in drug_info
     ]

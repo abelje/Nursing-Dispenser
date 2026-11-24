@@ -6,7 +6,7 @@ from middleware import (amount_given,
                         authenticate,
                         get_patient,
                         get_drug,
-                        update_last_login)
+                        update_last_login, dispense_drug)
 
 def check_login_info(username, password):
     name = username.get()
@@ -445,7 +445,7 @@ def load_patient_screen(patient, name):
                 # nonlocal dispense_table
 
                 dispense_table.append(d)
-                amount_given(d["name"])
+                # amount_given(d["name"])
                 drugs.remove(d)
 
                 # refresh the screen
@@ -541,6 +541,27 @@ def load_patient_screen(patient, name):
             )
 
     refresh_dispense_frame()
+
+    def dispense():
+        for drug in dispense_table:
+            dispense_drug(drug["drawer_num"])
+            drugs.append(drug)
+            amount_given(drug["name"])
+
+        dispense_table.clear()
+
+        refresh_drug_frame()
+        refresh_dispense_frame()
+
+    dispense_button = ttk.Button(
+        root,
+        text="dispense",
+        command=dispense
+    )
+    dispense_button.grid(
+        column=3,
+        row=3
+    )
 
     # Update the scrollable area when content changes
     def update_scroll_region(event=None):

@@ -2,6 +2,7 @@ from sqlite_code import get_user, database_update_drug_count
 from sqlite_code import database_get_patient
 from sqlite_code import database_get_drug
 from sqlite_code import database_update_last_login
+import time
 
 def authenticate(username, pswd):
     # grab the user info if it exists in the user table
@@ -46,3 +47,8 @@ def amount_given(drug_name):
 #     # you then remove that at that position and then insert that value into the other table
 #     dispense_table.append(drug)
 
+def dispense_drug(drug_drawer_num):
+    # open_drawer(drug_drawer_num)
+    # drawer 1 and 2 have the drugs requested
+    print(drug_drawer_num)
+    time.sleep(10)
