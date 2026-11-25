@@ -2,11 +2,13 @@ import ctypes
 import tkinter as tk
 from tkinter import ttk
 
-from middleware import (amount_given,
-                        authenticate,
-                        get_patient,
-                        get_drug,
-                        update_last_login, dispense_drug)
+from python_db.middleware import *
+
+# from ../python_db/middleware import (amount_given,
+#                         authenticate,
+#                         get_patient,
+#                         get_drug,
+#                         update_last_login, dispense_drug)
 
 def check_login_info(username, password):
     name = username.get()
