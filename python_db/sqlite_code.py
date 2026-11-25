@@ -68,7 +68,7 @@ def database_get_patient(username):
     # connect the database
     # connection = sqlite3.connect('wlcnursing.db')
     # cursor = connection.cursor()
-    engine = db.create_engine("sqlite:///wlcnursing.db")
+    engine = db.create_engine(DATABASE_URL, echo=False)
     conn = engine.connect()
     metadata = db.MetaData()
     patient = db.Table('patient', metadata, autoload_with=engine)
@@ -143,7 +143,7 @@ def database_get_drug(patient_name):
 
 def database_update_last_login(username):
     # connect the database
-    engine = db.create_engine("sqlite:///wlcnursing.db")
+    engine = db.create_engine(DATABASE_URL, echo=False)
     metadata = db.MetaData()
     user = db.Table('user', metadata, autoload_with=engine)
 
@@ -160,7 +160,7 @@ def database_update_last_login(username):
 
 def database_update_drug_count(drug_name):
     # connect the database
-    engine = db.create_engine("sqlite:///wlcnursing.db")
+    engine = db.create_engine(DATABASE_URL, echo=False)
     metadata = db.MetaData()
     drug = db.Table('drug', metadata, autoload_with=engine)
 
