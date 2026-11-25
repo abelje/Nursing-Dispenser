@@ -1,6 +1,6 @@
 --create tables
 
-CREATE TABLE user(
+CREATE TABLE IF NOT EXISTS user(
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     username TEXT NOT NULL,
     password TEXT NOT NULL,
@@ -8,14 +8,14 @@ CREATE TABLE user(
     last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE patient(
+CREATE TABLE IF NOT EXISTS patient(
     ID INTEGER PRIMARY KEY,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
     date_of_birth TEXT NOT NULL
 );
 
-CREATE TABLE user_patient (
+CREATE TABLE IF NOT EXISTS user_patient (
     user_id INTEGER,
     patient_id INTEGER,
 
@@ -27,7 +27,7 @@ CREATE TABLE user_patient (
         REFERENCES patient(ID)
 );
 
-CREATE TABLE drug(
+CREATE TABLE IF NOT EXISTS drug(
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     drawer_num INTEGER NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE drug(
     frequency INTEGER NOT NULL
 );
 
-CREATE TABLE patient_drug(
+CREATE TABLE IF NOT EXISTS patient_drug(
     patient_id INTEGER,
     drug_id INTEGER,
 
@@ -59,7 +59,7 @@ VALUES
 ('Stephanie', 'BadBoss', '5-21-2021', NULL),
 ('Carolyn', 'Work4ever!', '12-12-2012', NULL);
 
-UPDATE user
+--UPDATE user
 
 INSERT INTO patient (ID, first_name, last_name, date_of_birth)
 VALUES
