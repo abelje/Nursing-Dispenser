@@ -603,8 +603,6 @@ def load_patient_screen(patient, name):
         resize_drug_frame
     )
 
-ctypes.windll.shcore.SetProcessDpiAwareness(1)
-
 # create main window
 root = tk.Tk()
 root.attributes(
@@ -613,5 +611,7 @@ root.attributes(
 )
 
 load_login_screen()
+
+root.tk.call('tk', 'scaling', 1.0)
 
 root.mainloop()
