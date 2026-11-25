@@ -1,13 +1,24 @@
-import sqlite3
 import sqlalchemy as db
 from sqlalchemy.sql.functions import current_timestamp, func
+
+from pathlib import Path
+import sqlite3
+
+# Get the root project directory
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Reference the database
+DB_PATH = BASE_DIR / "db" / "wlcnursing.db"
+
+# Create SQLAlchemy database URL
+DATABASE_URL = f"sqlite:///{DB_PATH.as_posix()}"
 
 
 def get_user(username, pswd):
     # connect the database
     # connection = sqlite3.connect('wlcnursing.db')
     # cursor = connection.cursor()
-    engine = db.create_engine("sqlite:///wlcnursing.db")
+    engine = db.create_engine(DATABASE_URL, echo=False)
     conn = engine.connect()
     metadata = db.MetaData()
     user = db.Table('user', metadata, autoload_with=engine)

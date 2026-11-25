@@ -1,8 +1,10 @@
-from sqlite_code import get_user, database_update_drug_count
-from sqlite_code import database_get_patient
-from sqlite_code import database_get_drug
-from sqlite_code import database_update_last_login
+# from sqlite_code import get_user, database_update_drug_count
+# from sqlite_code import database_get_patient
+# from sqlite_code import database_get_drug
+# from sqlite_code import database_update_last_login
 import time
+
+from .sqlite_code import *
 
 def authenticate(username, pswd):
     # grab the user info if it exists in the user table
